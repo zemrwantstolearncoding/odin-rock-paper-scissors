@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function getComputerChoice() {
+            const options = ["rock", "paper", "scissors"];
+            let num = Math.floor(Math.random() * 3);
+            return options[num];
+        }
+
+        function getHumanChoice() {
+            let choice = prompt("Choose rock, paper or scissors");
+            return choice.toLowerCase();
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            if (humanChoice === computerChoice) {
+                alert("draw");
+                alert(`Player ${humanScore} : ${computerScore} Computer`);
+            }
+            else {
+                if (humanChoice === "rock") {
+                    if (computerChoice === "scissors") {
+                        humanScore += 1;
+                        alert("Rock beats scissors. You win this round!");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                    else {
+                        computerScore += 1;
+                        alert("Paper beats rock. Computer gets the point.");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                }
+                if (humanChoice === "paper") {
+                    if (computerChoice === "rock") {
+                        humanScore += 1;
+                        alert("Paper beats rock. You win this round!");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                    else {
+                        computerScore += 1;
+                        alert("Scissors beat paper. Computer gets the point.");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                }
+                if (humanChoice === "scissors") {
+                    if (computerChoice === "paper") {
+                        humanScore += 1;
+                        alert("Scissors beat paper. You win this round!");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                    else {
+                        computerScore += 1;
+                        alert("Rock beats scissors. Computer gets the point.");
+                        alert(`Player ${humanScore} : ${computerScore} Computer`);
+                    }
+                }
+            }
+        }
+        
+        function playGame() {
+            while (humanScore < 5 && computerScore < 5) {
+                playRound(getHumanChoice(), getComputerChoice());
+            }
+            if (humanScore === 5) {
+                alert("Congratulations. You won! Reload the page to play again.");
+            }
+            else {
+                alert("Computer won. GG. Reload the page to play again.");
+            }
+            humanScore = 0;
+            computerScore = 0;
+        }
+
+        playGame();
+    </script>
+</body>
+</html>
